@@ -4,12 +4,12 @@ particle_filter:
     scan_topic: '/scan'
     odometry_topic: '/odom'
     # range data downsampling
-    angle_step: 18
-    max_particles: 4000
+    angle_step: 20 # 18
+    max_particles: 3000 # 4000
     squash_factor: 2.2
     # visualization
     viz: 1
-    max_viz_particles: 60
+    max_viz_particles: 10 # 60
     # ray marching method
     range_method: 'rmgpu'
     theta_discretization: 112
