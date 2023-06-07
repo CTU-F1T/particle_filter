@@ -44,6 +44,7 @@ from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point, Pose, PoseStamped, PoseArray, Quaternion, PolygonStamped, Polygon, Point32, PoseWithCovarianceStamped, PointStamped, TransformStamped
 from nav_msgs.msg import Odometry
 from nav_msgs.srv import GetMap
+from rcl_interfaces.msg import ParameterDescriptor
 
 '''
 These flags indicate several variants of the sensor model. Only one of them is used at a time.
@@ -64,27 +65,27 @@ class ParticleFiler(Node):
         super().__init__('particle_filter')
 
         # declare parameters
-        self.declare_parameter('angle_step')
-        self.declare_parameter('max_particles')
-        self.declare_parameter('max_viz_particles')
-        self.declare_parameter('squash_factor')
-        self.declare_parameter('max_range')
-        self.declare_parameter('theta_discretization')
-        self.declare_parameter('range_method')
-        self.declare_parameter('rangelib_variant')
-        self.declare_parameter('fine_timing')
-        self.declare_parameter('publish_odom')
-        self.declare_parameter('viz')
-        self.declare_parameter('z_short')
-        self.declare_parameter('z_max')
-        self.declare_parameter('z_rand')
-        self.declare_parameter('z_hit')
-        self.declare_parameter('sigma_hit')
-        self.declare_parameter('motion_dispersion_x')
-        self.declare_parameter('motion_dispersion_y')
-        self.declare_parameter('motion_dispersion_theta')
-        self.declare_parameter('scan_topic')
-        self.declare_parameter('odometry_topic')
+        self.declare_parameter('angle_step', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('max_particles', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('max_viz_particles', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('squash_factor', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('max_range', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('theta_discretization', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('range_method', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('rangelib_variant', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('fine_timing', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('publish_odom', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('viz', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('z_short', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('z_max', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('z_rand', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('z_hit', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('sigma_hit', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('motion_dispersion_x', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('motion_dispersion_y', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('motion_dispersion_theta', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('scan_topic', descriptor = ParameterDescriptor(dynamic_typing = True))
+        self.declare_parameter('odometry_topic', descriptor = ParameterDescriptor(dynamic_typing = True))
 
         # parameters
         self.ANGLE_STEP           = self.get_parameter('angle_step').value
